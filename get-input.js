@@ -12,7 +12,7 @@
 // would return "5".
 
 function getInput(n) {
-  return process.argv[n + 1];
+  return process.argv[n + 2];
 }
 
 module.exports = getInput;

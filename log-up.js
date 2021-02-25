@@ -6,6 +6,11 @@ const {
   passwordMatches,
 } = require("./main.js");
 
+let email = getInput(0);
+let password = getInput(1);
+
+
+
 // The code immediately above grabs the functions you'll
 // need for this front-end code. Remember that you
 // already have the back-end logic.
@@ -29,25 +34,38 @@ const {
 // 1. If the email belongs to one of our registered
 // users AND the password matches that user, tell them
 // that they are logged in.
+if (isRegisteredUser(email) && passwordMatches(email, password)){
+  console.log("You are logged in.")
+}
 
 // 2. If the email belongs to one of our registered
 // users but the password does not match that user,
 // tell them their password is incorrect.
-
+else if(isRegisteredUser(email)){
+  console.log("Password is incorrect.")
+}
 // 3. If the email does not belong to one of our
 // registered users, and the email and password are
 // both valid, tell them they're signed up.
-
+else if(isValidEmail(email) && (!isRegisteredUser(email)) && (isValidPassword(password))){
+  console.log("You're signed up!")
+}
 // 4. If the email does not belong to one of our
 // registered users, and the email is not valid,
 // tell them their email is not valid. Preferably
 // also tell them what makes a valid email.
-
+else if (!isValidEmail(email)){
+  console.log("Email does not belong to one of our users." +
+  " Please register with a valid email @codeimmersives.com")
+}
 // 5. If the email does not belong to one of our
 // registered users, and the password is not valid,
 // tell them their password is not valid. Preferably
 // also tell them what makes a valid password.
-
+else if(!isValidPassword(password)){
+  console.log("Password is not a valid password. \n" + 
+  "Please enter a password that is at least 8 characters in length and includes an uppercase and lowercase number");
+}
 // As long as given those inputs you get the right
 // outputs, how your branching `if` logic works is
 // up to you!
